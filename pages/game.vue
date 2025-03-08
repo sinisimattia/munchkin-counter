@@ -9,9 +9,8 @@ const total = computed(() => Math.max(level.value + force.value, 0));
 
 const sell = () => {
     const promptResult = prompt('Insert price', '0') ?? '0'
-    const value = parseInt(promptResult)
-
-    gold.value += value
+    let value = Number(promptResult) ?? 0
+    gold.value += isNaN(value) ? 0 : value
 
     while (gold.value >= 1000) {
         gold.value -= 1000
@@ -55,12 +54,6 @@ const sell = () => {
                     <UIButton @click="force++">👆</UIButton>
                 </div>
             </div> 
-        </div>
-
-        <div class="flex flex-row justify-items-stretch gap-0">
-            <div class="bg-dark text-light border flex flex-row grow gap-3 justify-center items-center py-2 px-4">
-                <p>Built by <a class="text-accent font-bold" href="https://snisni.it">Mattia Sinisi</a></p>
-            </div>
         </div>
     </div>
 </template>
