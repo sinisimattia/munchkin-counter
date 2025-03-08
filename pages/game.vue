@@ -8,7 +8,8 @@ const gold = ref(0);
 const total = computed(() => Math.max(level.value + force.value, 0));
 
 const sell = () => {
-    const value = parseInt(prompt('Insert price'))
+    const promptResult = prompt('Insert price', '0') ?? '0'
+    const value = parseInt(promptResult)
 
     gold.value += value
 
